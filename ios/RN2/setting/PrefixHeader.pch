@@ -1,0 +1,52 @@
+//
+//  PrefixHeader.pch
+//  RN2
+//
+//  Created by hipiao on 2017/10/24.
+//  Copyright © 2017年 Facebook. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+
+#import <SVProgressHUD.h>
+
+#import "ReactView.h"
+#import "RTModule.h"
+
+#import "Masonry.h"
+
+#import "BaseViewController.h"
+
+/**
+ *  处理NSLog的debug版和release版
+ */
+#ifndef __OPTIMIZE__
+#define NSLog(...) printf("%s\n",[[NSString stringWithFormat:__VA_ARGS__] UTF8String])
+#else
+#define NSLog(...) {}
+#endif
+
+#define JWidth [[UIScreen mainScreen]bounds].size.width
+#define JHeight [[UIScreen mainScreen]bounds].size.height
+
+//本地环境
+#define JSIP @"http://172.23.144.158:8081/"
+#define JSIPNew @"http://ozsp8z7w0.bkt.clouddn.com/"
+
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+//导航栏高度
+#define SafeTHeight (JHeight == 812.0 ? 88 : 64)
+
+#endif /* PrefixHeader_pch */
